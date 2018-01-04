@@ -2,6 +2,8 @@
 
 Library to create a DOM element with inline CSS using pure JS.
 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/athersharif/js-create-element/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/js-create-element.svg?style=flat)](https://www.npmjs.com/package/react)
+
 ----------
 
 ## Installation

@@ -1,0 +1,68 @@
+<html>
+  <style>
+    .some-class2::before {
+      content: 'haha';
+      width: 10px;
+      height: 10px;
+      background-color: red;
+    }
+
+    .some-class2 {
+      width: 100px;
+      color: white;
+      padding: 10px;
+      background-color: blue;
+    }
+
+    .some-class2::after {
+      width: 10px;
+      height: 10px;
+      background-color: green;
+      content: '';
+      display: inline-block;
+    }
+  </style>
+  <body>
+    <h1>Example using js-create-element</h1>
+    <div id="js-create-element-test"></div>
+    <h1>Example using CSS</h1>
+    <div id="css-test">
+      <div id="some-id2" class="some-class2" aria-hidden="false">this is some text i want inside the element</div>
+    </div>
+  </body>
+  <script src="jsCreateElement.min.js"></script>
+  <script type="text/javascript">
+    var elemType = 'div';
+    var elemAttr = {
+      id: 'some-id',
+      class: 'some-class',
+      'aria-hidden': false
+    };
+    var elemStyle = {
+      width: '100px',
+      color: 'white',
+      padding: '10px',
+      backgroundColor: 'blue'
+    };
+    var elemText = 'this is some text i want inside the element';
+
+    var pseudoElementBefore = {
+      content: 'haha',
+      width: '10px',
+      height: '10px',
+      backgroundColor: 'red'
+    };
+
+    var pseudoElementAfter = {
+      width: '10px',
+      height: '10px',
+      backgroundColor: 'green',
+      content: '',
+      display: 'inline-block'
+    };
+
+    var elem = jsCreateElement.createElement(null, elemAttr, elemStyle, elemText, pseudoElementBefore, pseudoElementAfter);
+
+    document.getElementById('js-create-element-test').appendChild(elem);
+  </script>
+</html>

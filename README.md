@@ -2,7 +2,7 @@
 
 Library to create a DOM element with inline CSS using pure JS.
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/athersharif/js-create-element/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/js-create-element.svg?style=flat)](https://www.npmjs.com/package/react)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/athersharif/js-create-element/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/js-create-element.svg?style=flat)](https://www.npmjs.com/package/js-create-element) [![Travis](https://travis-ci.org/athersharif/js-create-element.svg?branch=master)](https://travis-ci.org/athersharif/js-create-element)
 
 ----------
 
@@ -91,7 +91,7 @@ Example: `This is some text I want inside the element.`
 
 #### pseudoElementBefore
 
-pseudoElementBefore replicates the behavior of CSS pseudo-element `::before`.
+pseudoElementBefore replicates the behavior of CSS pseudo-element `::before` via a `span` element.
 
 Example:
 
@@ -106,7 +106,7 @@ Example:
 
 #### pseudoElementAfter
 
-pseudoElementAfter replicates the behavior of CSS pseudo-element `::after`.
+pseudoElementAfter replicates the behavior of CSS pseudo-element `::after` via a `span` element.
 
 Example:
 
@@ -121,43 +121,45 @@ Example:
 
 ## Demo
 
-A really simple demo can be found [here](https://github.com/athersharif/js-create-element/blob/master/demo/index.html).
+A really simple demo can be found [here](https://athersharif.github.io/js-create-element/demo/).
 
-## Contributing
-
-Pull requests are welcome and appreciated. Issues can be created [here](https://github.com/athersharif/js-create-element/issues). Following dev tools are used:
+## Dev Tools
 
 ### Lint
 
 [ESLint](https://github.com/eslint/eslint) is used for linting.
 
-Command: `make lint`
+Command: `make lint` / `npm run lint`
 
 ### Tests
 
 [Mocha](https://github.com/mochajs/mocha) and [Chai](https://github.com/chaijs/chai) are used as testing frameworks. Coverage is handled though [Istanbul](https://github.com/istanbuljs/nyc). Runs lint as well.
 
-Command: `make test`
+Command: `make test` / `npm test`
 
 For CI: `npm run test:ci`
 
 ### Docs
 
-[JSDoc](https://github.com/jsdoc3/jsdoc) is used for documentation. Documentation can be found [here](https://github.com/athersharif/js-create-element/tree/master/docs).
+[JSDoc](https://github.com/jsdoc3/jsdoc) is used for documentation. Documentation can be found [here](https://athersharif.github.io/js-create-element/).
 
-Command: `make docs`
+Command: `make docs` / `npm run docs`
 
 ### Code formatter
 
 [Prettier](https://github.com/prettier/prettier) is used for code formatting.
 
-Command: `make prettier`
+Command: `make prettier` / `npm run prettier`
 
 ### Build
 
 [Webpack](https://github.com/webpack/webpack) is used for build purposes. Runs lint, tests, code formatter and docs as well.
 
-Command: `make build`
+Command: `make build` / `npm run build`
+
+## Contributing
+
+Pull requests are welcome and appreciated. Contributing guidelines can be found [here](https://github.com/athersharif/js-create-element/blob/master/CONTRIBUTING.md).
 
 ## License
 

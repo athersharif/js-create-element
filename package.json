@@ -1,6 +1,6 @@
 {
   "name": "js-create-element",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Library to create a DOM element with inline CSS using pure JS",
   "main": "src/jsCreateElement.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "test:ci": "npm test -- --watch",
     "build": "webpack --config webpack.config.js",
     "lint": "./node_modules/.bin/eslint src/",
-    "prettier": "./node_modules/.bin/prettier --single-quote --trailing-comma es5 --write '{,!(node_modules)/**/}*.js'",
+    "prettier": "./node_modules/.bin/prettier --single-quote --trailing-comma es5 --write '{,!(node_modules|docs|build)/**/}*.js'",
     "docs": "./node_modules/.bin/jsdoc -d docs/ src/*.js"
   },
   "repository": {

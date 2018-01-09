@@ -8,10 +8,19 @@
  */
 import forEach from 'lodash/forEach';
 import assign from 'lodash/assign';
-import isString from 'lodash/isString';
 import isPlainObject from 'lodash/isPlainObject';
 import isUndefined from 'lodash/isUndefined';
 import isNull from 'lodash/isNull';
+import toString from 'lodash/toString';
+import isEqual from 'lodash/isEqual';
+import split from 'lodash/split';
+
+/**
+ *
+ * SVG NameSpace URL
+ *
+ */
+const svgNameSpace = 'http://www.w3.org/2000/svg';
 
 /**
  *
@@ -22,7 +31,7 @@ import isNull from 'lodash/isNull';
  * @return {string} A valid string object or null
  *
  */
-const filterString = str => (isString(str) ? str : null);
+const filterString = str => (str && !isPlainObject(str) ? toString(str) : null);
 
 /**
  *
@@ -30,7 +39,7 @@ const filterString = str => (isString(str) ? str : null);
  *
  * @param {object} obj - The object to filter
  *
- * @return {string} A valid object or undefined
+ * @return {object} A valid object or undefined
  *
  */
 const filterObject = obj => (isPlainObject(obj) ? obj : undefined);
@@ -71,6 +80,27 @@ const insertPseudoElement = (pseudoElemStyle, parent) => {
 
 /**
  *
+ * Creates the appropriate DOM element based on type
+ *
+ * @param {string} type - The type of the element to be created
+ *
+ * @return {Element} The DOM element based on supplied type
+ *
+ */
+const createDOMElement = type => {
+  const [elemType, subType] = split(type, ':');
+  if (isEqual(elemType, 'svg')) {
+    return document.createElementNS(
+      svgNameSpace,
+      isUndefined(subType) ? elemType : subType
+    );
+  } else {
+    return document.createElement(elemType);
+  }
+};
+
+/**
+ *
  * Creates a DOM element using pure JS with the given attributes, style, text,
  * and pseudo elements
  *
@@ -81,7 +111,7 @@ const insertPseudoElement = (pseudoElemStyle, parent) => {
  * @param {object} pseudoBefore - The CSS for a ::before pseudo-element
  * @param {object} pseudoAfter - The CSS for a ::after pseudo-element
  *
- * @return {string} The resulting element
+ * @return {Element} The resulting element
  *
  */
 export const createElement = (
@@ -99,7 +129,7 @@ export const createElement = (
   pseudoBefore = filterObject(pseudoBefore);
   pseudoAfter = filterObject(pseudoAfter);
 
-  let element = document.createElement(type);
+  let element = createDOMElement(type);
 
   forEach(attributes, (value, key) => element.setAttribute(key, value));
   forEach(style, (value, key) => assign(element.style, { [key]: value }));

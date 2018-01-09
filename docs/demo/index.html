@@ -29,6 +29,8 @@
     <div id="css-test">
       <div id="some-id2" class="some-class2" aria-hidden="false">this is some text i want inside the element</div>
     </div>
+    <h1>SVG Example</h1>
+    <div id="svg-test"></div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/js-create-element/build/jsCreateElement.min.js"></script>
   <script type="text/javascript">
@@ -64,5 +66,25 @@
     var elem = jsCreateElement.createElement(null, elemAttr, elemStyle, elemText, pseudoElementBefore, pseudoElementAfter);
 
     document.getElementById('js-create-element-test').appendChild(elem);
+
+    var svgAttributes = {
+      height: '100',
+      width: '100'
+    };
+    var svgElem = jsCreateElement.createElement('svg', svgAttributes);
+
+    var svgCircleAttributes = {
+      cx: '50',
+      cy: '50',
+      r: '40',
+      stroke: 'black',
+      'stroke-width': 3,
+      fill: 'red'
+    };
+    var svgCircle = jsCreateElement.createElement('svg:circle', svgCircleAttributes);
+
+    svgElem.appendChild(svgCircle);
+
+    document.getElementById('svg-test').appendChild(svgElem);
   </script>
 </html>

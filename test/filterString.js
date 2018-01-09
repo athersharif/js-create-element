@@ -23,10 +23,16 @@ describe('filterString', () => {
     assert.isNull(result);
   });
 
-  it('should return null if array type', () => {
-    const result = filterString(['a']);
+  it('should return integer string if integer type', () => {
+    const result = filterString(1);
 
-    assert.isNull(result);
+    assert.equal(result, '1');
+  });
+
+  it('should return null if array type', () => {
+    const result = filterString(['a', 'b']);
+
+    assert.equal(result, 'a,b');
   });
 
   it('should return null if object type', () => {
@@ -38,6 +44,6 @@ describe('filterString', () => {
   it('should return null if boolean type', () => {
     const result = filterString(true);
 
-    assert.isNull(result);
+    assert.equal(result, 'true');
   });
 });

@@ -49,6 +49,16 @@ describe('createElement', () => {
     assert.isEmpty(result.textContent);
   });
 
+  it('should return correct DOM element with specified svg type', () => {
+    const result = createElement('svg:g');
+
+    assert.exists(result);
+    assert.equal(result.tagName, 'g');
+    assert.isNull(result.getAttribute('id'));
+    assert.isEmpty(result.childNodes);
+    assert.isEmpty(result.textContent);
+  });
+
   it('should return correct DOM element with the specified attributes', () => {
     const result = createElement(null, attributes);
 

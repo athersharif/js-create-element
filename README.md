@@ -6,6 +6,13 @@ Library to create a DOM element with inline CSS using pure JS.
 
 ----------
 
+## Latest Release Notes
+
+Version 1.1.0 implements the following changes:
+
+- Support for SVG elements
+- Allows strings, arrays, and booleans to be passed as text
+
 ## Installation
 
 ### npm
@@ -50,9 +57,9 @@ Returns the DOM element.
 
 #### type
 
-The type of the DOM element.
+The type of the DOM element. For SVG elements, the type will look like `svg:[elementType]`.
 
-Example: `a`, `p`, `span`
+Example: `a`, `p`, `span`, `svg:circle`
 
 #### attributes
 
@@ -151,7 +158,7 @@ Command: `make docs` / `npm run docs`
 
 Command: `make prettier` / `npm run prettier`
 
-### Build
+### Buildsr
 
 [Webpack](https://github.com/webpack/webpack) is used for build purposes. Runs lint, tests, code formatter and docs as well.
 

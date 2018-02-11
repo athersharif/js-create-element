@@ -8,10 +8,9 @@ Library to create a DOM element with inline CSS using pure JS.
 
 ## Latest Release Notes
 
-Version 1.1.0 implements the following changes:
+Version 1.2.0 implements the following breaking changes:
 
-- Support for SVG elements
-- Allows strings, arrays, and booleans to be passed as text
+- Arguments structure has been changed to accept only two arguments: `type` and `options`. Please refer to the docs.
 
 ## Installation
 
@@ -21,7 +20,7 @@ Version 1.1.0 implements the following changes:
 
 ### Browser
 
-The minified version of the script can be found [here](https://github.com/athersharif/js-create-element/blob/master/build/jsCreateElement.min.js).
+The minified version of the script can be found [here](https://cdn.jsdelivr.net/npm/js-create-element/build/jsCreateElement.min.js).
 
 `<script type="text/javascript" src="jsCreateElement.min.js"></script>`
 
@@ -32,14 +31,7 @@ The minified version of the script can be found [here](https://github.com/athers
 ## Usage
 
 ```
-createElement(
-	[type],
-	[attributes],
-	[style],
-	[text],
-	[pseudoElementBefore],
-	[pseudoElementAfter]
- )
+createElement([type], [options])
 ```
 
 Returns the DOM element.
@@ -49,11 +41,7 @@ Returns the DOM element.
 |                           | Type   | Default |
  -------------------------- | ------ | --------|
 | [type](#type)                      | string | 'div'   |
-| [attributes](#attributes)                | object | {}      |
-| [style](#style)                     | object | {}      |
-| [text](#text)                      | string | null    |
-| [pseudoElementBefore](#pseudoelementbefore)       | object | null    |
-| [pseudoElementAfter](#pseudoelementafter)        | object | null    |
+| [options](#options)                | object | {}      |
 
 #### type
 
@@ -61,19 +49,20 @@ The type of the DOM element. For SVG elements, the type will look like `svg:[ele
 
 Example: `a`, `p`, `span`, `svg:circle`
 
-#### attributes
+### options
 
-The list of attributes for the DOM element.
+The options argument contains attributes and styles of the DOM Element. Contains the following arguments:
 
-Example:
+#### Properties
 
-```
-{
-	id: 'sample-id',
-	class: 'sample-class',
-	'aria-hidden': true
-}
-```
+|                           | Type   | Default |
+ -------------------------- | ------ | --------|
+| [style](#style)                     | object | {}      |
+| [text](#text)                      | string | null    |
+| [pseudoElementBefore](#pseudoelementbefore)       | object | null    |
+| [pseudoElementAfter](#pseudoelementafter)        | object | null    |
+| ...[attributes](#attributes)                    | object | null |
+
 
 #### style
 
@@ -82,7 +71,7 @@ The list of styles for the DOM element.
 Example:
 
 ```
-{
+style: {
      width: '100px',
      color: 'white',
      padding: '10px',
@@ -94,16 +83,20 @@ Example:
 
 The inner text for the DOM element.
 
-Example: `This is some text I want inside the element.`
+Example:
+
+```
+text: This is some text I want inside the element.
+```
 
 #### pseudoElementBefore
 
-pseudoElementBefore replicates the behavior of CSS pseudo-element `::before` via a `span` element.
+pseudoElementBefore replicates the behavior of CSS pseudo-element `::before` via a `span` element. `content` property is required as per W3 ([reference](https://www.w3.org/TR/CSS2/generate.html#propdef-content)).
 
 Example:
 
 ```
-{
+pseudoBefore: {
      content: 'sample-content',
      width: '10px',
      height: '10px',
@@ -113,12 +106,12 @@ Example:
 
 #### pseudoElementAfter
 
-pseudoElementAfter replicates the behavior of CSS pseudo-element `::after` via a `span` element.
+pseudoElementAfter replicates the behavior of CSS pseudo-element `::after` via a `span` element. `content` property is required as per W3 ([reference](https://www.w3.org/TR/CSS2/generate.html#propdef-content)).
 
 Example:
 
 ```
-{
+pseudoAfter: {
      content: 'sample-content',
      width: '10px',
      height: '10px',
@@ -126,9 +119,13 @@ Example:
 }
 ```
 
+#### attributes
+
+The attributes for the DOM Element (such as `id`, `class`, etc.). This is implemented as a spread operator so any key-value pair mentioned other than the ones mentioned above will attempt to be set as an attribute on the element. Several online resources such as [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element) provide good documentation on which attributes are acceptable for a given element type.
+
 ## Demo
 
-A really simple demo can be found [here](https://athersharif.github.io/js-create-element/demo/).
+A really simple demo can be found [here](https://athersharif.github.io/js-create-element/demo/). A Codepen playground can be found [here](https://codepen.io/athersharif/pen/BYRJbe).
 
 ## Dev Tools
 
@@ -158,7 +155,7 @@ Command: `make docs` / `npm run docs`
 
 Command: `make prettier` / `npm run prettier`
 
-### Buildsr
+### Build
 
 [Webpack](https://github.com/webpack/webpack) is used for build purposes. Runs lint, tests, code formatter and docs as well.
 

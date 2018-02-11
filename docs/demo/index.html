@@ -35,45 +35,43 @@
   <script src="https://cdn.jsdelivr.net/npm/js-create-element/build/jsCreateElement.min.js"></script>
   <script type="text/javascript">
     var elemType = 'div';
-    var elemAttr = {
+    var elemOptions = {
       id: 'some-id',
       class: 'some-class',
-      'aria-hidden': false
-    };
-    var elemStyle = {
-      width: '100px',
-      color: 'white',
-      padding: '10px',
-      backgroundColor: 'blue'
-    };
-    var elemText = 'this is some text i want inside the element';
+      'aria-hidden': false,
+      style: {
+        width: '100px',
+        color: 'white',
+        padding: '10px',
+        backgroundColor: 'blue'
+      },
+      text: 'this is some text i want inside the element',
+      pseudoBefore: {
+        content: 'haha',
+        width: '10px',
+        height: '10px',
+        backgroundColor: 'red'
+      },
+      pseudoAfter: {
+        width: '10px',
+        height: '10px',
+        backgroundColor: 'green',
+        content: '',
+        display: 'inline-block'
+      }
+    }
 
-    var pseudoElementBefore = {
-      content: 'haha',
-      width: '10px',
-      height: '10px',
-      backgroundColor: 'red'
-    };
-
-    var pseudoElementAfter = {
-      width: '10px',
-      height: '10px',
-      backgroundColor: 'green',
-      content: '',
-      display: 'inline-block'
-    };
-
-    var elem = jsCreateElement.createElement(null, elemAttr, elemStyle, elemText, pseudoElementBefore, pseudoElementAfter);
+    var elem = jsCreateElement.createElement(elemType, elemOptions);
 
     document.getElementById('js-create-element-test').appendChild(elem);
 
-    var svgAttributes = {
+    var svgOptions = {
       height: '100',
       width: '100'
     };
-    var svgElem = jsCreateElement.createElement('svg', svgAttributes);
+    var svgElem = jsCreateElement.createElement('svg', svgOptions);
 
-    var svgCircleAttributes = {
+    var svgCircleOptions = {
       cx: '50',
       cy: '50',
       r: '40',
@@ -81,7 +79,7 @@
       'stroke-width': 3,
       fill: 'red'
     };
-    var svgCircle = jsCreateElement.createElement('svg:circle', svgCircleAttributes);
+    var svgCircle = jsCreateElement.createElement('svg:circle', svgCircleOptions);
 
     svgElem.appendChild(svgCircle);
 

@@ -8,7 +8,7 @@ const attributes = {
   'aria-hidden': false,
 };
 
-const styles = {
+const style = {
   width: '100px',
   color: 'white',
   backgroundColor: 'blue',
@@ -49,6 +49,16 @@ describe('createElement', () => {
     assert.isEmpty(result.textContent);
   });
 
+  it('should return correct DOM element without a svg type', () => {
+    const result = createElement('svg');
+
+    assert.exists(result);
+    assert.equal(result.tagName, 'svg');
+    assert.isNull(result.getAttribute('id'));
+    assert.isEmpty(result.childNodes);
+    assert.isEmpty(result.textContent);
+  });
+
   it('should return correct DOM element with specified svg type', () => {
     const result = createElement('svg:g');
 
@@ -60,7 +70,7 @@ describe('createElement', () => {
   });
 
   it('should return correct DOM element with the specified attributes', () => {
-    const result = createElement(null, attributes);
+    const result = createElement(null, { ...attributes });
 
     assert.exists(result);
     assert.equal(result.tagName, 'DIV');
@@ -72,7 +82,7 @@ describe('createElement', () => {
   });
 
   it('should return correct DOM element with the specified styles', () => {
-    const result = createElement(null, null, styles);
+    const result = createElement(null, { style: style });
 
     assert.exists(result);
     assert.equal(result.tagName, 'DIV');
@@ -85,7 +95,7 @@ describe('createElement', () => {
   });
 
   it('should return correct DOM element with the specified text', () => {
-    const result = createElement(null, null, null, 'some-text');
+    const result = createElement(null, { text: 'some-text' });
 
     assert.exists(result);
     assert.isNull(result.getAttribute('id'));
@@ -93,7 +103,7 @@ describe('createElement', () => {
   });
 
   it('should return correct DOM element with the specified pseudo-before-element', () => {
-    const result = createElement(null, null, null, null, pseudoBefore);
+    const result = createElement(null, { pseudoBefore: pseudoBefore });
 
     assert.exists(result);
     assert.equal(result.tagName, 'DIV');
@@ -107,7 +117,7 @@ describe('createElement', () => {
   });
 
   it('should return correct DOM element with the specified pseudo-after-element', () => {
-    const result = createElement(null, null, null, null, null, pseudoAfter);
+    const result = createElement(null, { pseudoAfter: pseudoAfter });
 
     assert.exists(result);
     assert.equal(result.tagName, 'DIV');
@@ -122,14 +132,13 @@ describe('createElement', () => {
   });
 
   it('should return correct DOM element with the all parameters specified', () => {
-    const result = createElement(
-      'a',
-      attributes,
-      styles,
-      'main-text',
-      pseudoBefore,
-      pseudoAfter
-    );
+    const result = createElement('a', {
+      ...attributes,
+      style: style,
+      text: 'main-text',
+      pseudoBefore: pseudoBefore,
+      pseudoAfter: pseudoAfter,
+    });
 
     assert.exists(result);
     assert.equal(result.tagName, 'A');

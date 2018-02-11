@@ -20,7 +20,7 @@ Version 1.2.0 implements the following breaking changes:
 
 ### Browser
 
-The minified version of the script can be found [here](https://cdn.jsdelivr.net/npm/js-create-element/build/jsCreateElement.min.js).
+The minified version of the script can be found [here](https://unpkg.com/js-create-element/build/jsCreateElement.min.js).
 
 `<script type="text/javascript" src="jsCreateElement.min.js"></script>`
 

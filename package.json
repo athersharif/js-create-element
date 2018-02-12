@@ -1,6 +1,6 @@
 {
   "name": "js-create-element",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Library to create a DOM element with inline CSS using pure JS",
   "main": "src/jsCreateElement.js",
   "scripts": {

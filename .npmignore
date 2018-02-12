@@ -1,4 +1,15 @@
-node_modules
-demo
 .nyc_output
+.eslintrc
+.babelrc
+.gitignore
+.travis.yml
 .DS_Store
+*.log
+
+Makefile
+webpack.config.js
+
+node_modules/
+docs/
+src/
+test/

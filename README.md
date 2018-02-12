@@ -8,8 +8,10 @@ Library to create a DOM element with inline CSS using pure JS.
 
 ## Latest Release Notes
 
-Version 1.2.0 implements the following breaking changes:
+Version 1.2.x implements the following breaking changes:
 
+- Fixes a bug where babel plugins needed to be installed explicitly to use the library.
+- Cleaned up npmignore
 - Arguments structure has been changed to accept only two arguments: `type` and `options`. Please refer to the docs.
 
 ## Installation

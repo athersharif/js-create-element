@@ -1,8 +1,7 @@
 {
   "name": "js-create-element",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Library to create a DOM element with inline CSS using pure JS",
-  "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/nyc mocha --require babel-core/register --require test/utils/helpers.js test/*.js",
     "test:ci": "npm test -- --watch",
@@ -24,6 +23,7 @@
   ],
   "author": "Ather Sharif",
   "license": "MIT",
+  "main": "index.js",
   "dependencies": {
     "lodash": "^4.17.4"
   },

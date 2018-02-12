@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const config = require('./package.json');
 
 const library = 'jsCreateElement';
 
@@ -12,21 +11,30 @@ plugins.push(
   })
 );
 
-module.exports = {
-  entry: path.resolve(__dirname, config.main),
-  output: {
-    library: library,
-    path: __dirname,
-    filename: `build/${library}.min.js`,
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.js?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
+function createConfig(target) {
+    var type = target === 'commonjs2' ? '-npm' : '';
+    return {
+      entry: path.resolve(__dirname, './src/jsCreateElement.js'),
+      output: {
+          path: __dirname,
+          filename: `build/${library}${type}.min.js`,
+          library: library,
+          libraryTarget: target
       },
-    ],
-  },
-  plugins: plugins,
-};
+      module: {
+        loaders: [
+          {
+            test: /\.js?$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/,
+          },
+        ],
+      },
+      plugins: plugins
+    };
+}
+
+module.exports = [
+  createConfig('var'),
+  createConfig('commonjs2')
+];

@@ -1,5 +1,5 @@
 'use strict';
 
-var jsCreateElement = require('./build/jsCreateElement.min.js');
+var jsCreateElement = require('./build/jsCreateElement-npm.min.js');
 
 module.exports = jsCreateElement;
